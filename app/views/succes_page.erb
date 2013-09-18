@@ -1,0 +1,9 @@
+<h1>Welcome to Bitly JR!</h1>
+
+<div class='success'>
+  <% if @url_new %>
+  <p>Your original URL has been bitly'd!</p>
+  <p class='old'><%=  @url_new.original %></p>
+  <p class='new'><%= "http://#{@url_new.updated}.com" %></p>
+  <% end %>
+</div>

@@ -1,0 +1,44 @@
+<h1>Welcome to Bitly JR!</h1>
+<p>Convert your URL!</p>
+<p> 5 Most recent conversions: </p>
+<% if @url%>
+<div class='urls'>
+  <% @url.each do |url| %>
+  <li><%= url.original %></li>
+
+  <% end %>
+</div>
+<% end %>
+<br>
+<form method="POST" action= "/urls">
+  <div>
+    <label for="original">URL</label>
+    <input id="original" name="long" type="text" placeholder="http:// or https://">
+  </div>
+  <div>
+    <input type= "SUBMIT" value= "bit.ly">
+  </div>
+</form>
+<br>
+<div class='error'>
+  <%=@error%>
+</div>
+
+<% if @url %>
+<table>
+  <thead>
+    <tr>
+      <th>Long</th>
+      <th>Bitly</th>
+    </tr>
+  </thead>
+  <tbody>
+    <% @url.each do |url| %>
+    <tr>
+    <td><%= url.original %></td>
+    <td><a href="<%= url.original %>" ><%= url.updated %></a></td>
+    <% end %>
+    </tr> 
+  </tbody>
+</table> 
+<% end %>
